@@ -22,7 +22,7 @@ public class LoginController {
 	private LoginService loginService;
 
 	@GetMapping("/login")
-	public ResponseBuilder authenticateUser(@RequestBody User user) throws ServiceException {
+	public ResponseBuilder authenticateUser( User user) throws ServiceException {
 		boolean userDetails = loginService.authenticateUser(user);
 		if (!userDetails) {
 			return new ResponseBuilder("F00", "Failed to login. Please try again!" );

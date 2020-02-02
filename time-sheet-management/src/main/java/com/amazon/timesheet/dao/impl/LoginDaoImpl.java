@@ -15,9 +15,7 @@ public class LoginDaoImpl implements LoginDao {
 @Primary
 public User userData() {
 	User user = new User();
-	user.setId(10);
     user.setEmail("a648875@rat.com");
-    user.setName("rathna");
     user.setPassword("test@123");
 	return user;
 }
