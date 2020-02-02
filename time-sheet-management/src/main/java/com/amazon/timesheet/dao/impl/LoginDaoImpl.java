@@ -1,6 +1,8 @@
 package com.amazon.timesheet.dao.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.amazon.timesheet.dao.LoginDao;
@@ -20,10 +22,15 @@ public User userData() {
 	return user;
 }
 	
+
+@Autowired
+private JdbcTemplate jdbcTemplate;
 	@Override
 	public boolean authenticateuser(User user) {
-
-	if(user.getEmail().equalsIgnoreCase(userData().getEmail())) {
+	String query="select email from user";
+	String email=jdbcTemplate.queryForObject(query, String.class);
+			System.out.println(email);
+	if(user.getEmail().equalsIgnoreCase(email)) {
 		return true;
 	}
 		return false;
